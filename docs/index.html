@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +26,9 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
+    /* 📱 スマホ実機で縦スクロールができるように修正 */
+    overflow-x:hidden;
+    overflow-y:auto;
     font-family:
         "Hiragino Sans",
         "Yu Gothic",
@@ -39,6 +40,8 @@ body{
         linear-gradient(135deg,var(--bg1),var(--bg2));
 
     color:var(--text);
+    /* 📱 スマホ画面でカードが上下ピタピタにくっつくのを防ぐ余白 */
+    padding:40px 0;
 }
 
 .float{
@@ -46,6 +49,7 @@ body{
     font-size:1.5rem;
     opacity:.3;
     animation:float 12s linear infinite;
+    z-index: 0;
 }
 
 @keyframes float{
@@ -58,35 +62,28 @@ body{
 }
 
 .card{
+    position: relative;
+    z-index: 1;
     width:min(92vw,420px);
 
     backdrop-filter:blur(16px);
+    -webkit-backdrop-filter: blur(16px); /* Safari対応 */
     background:var(--card);
 
     border:1px solid rgba(255,255,255,.8);
-
     border-radius:32px;
-
     padding:32px 24px;
-
     text-align:center;
-
-    box-shadow:
-        0 10px 40px rgba(150,180,255,.18);
+    box-shadow:0 10px 40px rgba(150,180,255,.18);
 }
 
 .icon{
     width:170px;
     height:170px;
-
     border-radius:50%;
     object-fit:cover;
-
     border:4px solid rgba(255,255,255,.95);
-
-    box-shadow:
-        0 0 30px rgba(180,220,255,.5);
-
+    box-shadow:0 0 30px rgba(180,220,255,.5);
     margin-bottom:18px;
 }
 
@@ -112,14 +109,12 @@ body{
 .badge{
     padding:8px 14px;
     border-radius:999px;
-
     background:
         linear-gradient(
             135deg,
             rgba(159,223,255,.35),
             rgba(216,200,255,.35)
         );
-
     font-size:.9rem;
 }
 
@@ -130,14 +125,9 @@ body{
 
 .quote{
     padding:14px;
-
     border-radius:18px;
-
-    background:
-        rgba(255,255,255,.55);
-
+    background:rgba(255,255,255,.55);
     font-size:.95rem;
-
     min-height:70px;
 }
 
@@ -149,7 +139,6 @@ body{
 </style>
 
 </head>
-
 <body>
 
 <div class="float" style="left:8%;animation-delay:0s;">🪽</div>
@@ -160,41 +149,32 @@ body{
 <div class="float" style="left:92%;animation-delay:7s;">🪽</div>
 
 <div class="card">
+    <img src="icon002.jpg" alt="さとう" class="icon">
+    <div class="title">🪽 さとう 🪽</div>
+    <div class="subtitle">かわいいものを愛する美少女</div>
 
-```
-<img src="icon002.jpg" alt="さとう" class="icon">
+    <div class="badges">
+        <div class="badge">🎀 アジフライ</div>
+        <div class="badge">🐟 うなぎ</div>
+        <div class="badge">🍣 エンガワ</div>
+        <div class="badge">🍜 蘭州牛肉麺</div>
+    </div>
 
-<div class="title">🪽 さとう 🪽</div>
+    <div class="profile">
+        かわいいものを追いかけながら<br>
+        のんびりインターネットを漂う住人。<br><br>
+        気になった言葉を集めたり、<br>
+        好きな世界観に浸ったり、<br>
+        今日もどこかでふわふわ活動中。
+    </div>
 
-<div class="subtitle">
-    かわいいものを愛する美少女
-</div>
+    <div class="quote" id="quote">
+        読み込み中...
+    </div>
 
-<div class="badges">
-    <div class="badge">🎀 アジフライ</div>
-    <div class="badge">🐟 うなぎ</div>
-    <div class="badge">🍣 エンガワ</div>
-    <div class="badge">🍜 蘭州牛肉麺</div>
-</div>
-
-<div class="profile">
-    かわいいものを追いかけながら<br>
-    のんびりインターネットを漂う住人。<br><br>
-
-    気になった言葉を集めたり、<br>
-    好きな世界観に浸ったり、<br>
-    今日もどこかでふわふわ活動中。
-</div>
-
-<div class="quote" id="quote">
-    読み込み中...
-</div>
-
-<div class="footer">
-    さとうのおうち
-</div>
-```
-
+    <div class="footer">
+        さとうのおうち
+    </div>
 </div>
 
 <script>
@@ -210,8 +190,7 @@ const sayings = [
 ];
 
 const q = document.getElementById("quote");
-q.textContent =
-    sayings[Math.floor(Math.random()*sayings.length)];
+q.textContent = sayings[Math.floor(Math.random()*sayings.length)];
 </script>
 
 </body>

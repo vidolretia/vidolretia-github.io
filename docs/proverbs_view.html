@@ -13,30 +13,40 @@
             .link:hover { border-bottom: 1px solid #71b1ff; }
             hr { border: 0; border-top: 1px solid #333; margin: 40px 0; }
 
-    /* --- 📱 スマホ用のスタイル（画面幅が768px以下のとき） --- */
-    @media screen and (max-width: 760px) {
-    
-    /* 箴言全体の文字サイズを大きくする */
+/* ==========================================
+   📱 スマホ実機用の調整 (画面幅768px以下)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    /* 1. ページ全体の文字をパッと見やすく大きく */
     body {
-        font-size: 14px; /* 好みに合わせて調整してください */
+        font-size: 1.15rem !important; /* 標準より少し大きめ */
+        line-height: 1.6;
+        padding: 10px; /* スマホ画面の端に余白を作る */
     }
 
-    /* アイコン画像（imgタグ）を大きくする */
-    /* ※もしアイコンにクラス名（例: .icon）があればそれを使ってください */
-    .avatar {
-        width: 48px;  /* スマホで見やすい大きさに調整 */
-        height: 48px;
+    /* 2. アイコン画像を大きくする */
+    /* 生成AIの一般的なクラス名(avatar/icon/img)を網羅しています */
+    img, .avatar, .icon, .user-avatar {
+        width: 40px !important;  /* 好みに応じて数値を増やしてください */
+        height: 40px !important;
+        border-radius: 50%;     /* 丸型アイコンの場合の維持用 */
     }
 
-    /* アカウント名や日付などのフォントサイズ調整 */
-    .username, @estpls {
-        font-size: 14px;
+    /* 3. 各箴言カード（枠線）の余白をスマホ用に最適化 */
+    .card, .tweet, .post, .item, .proverb-card {
+        padding: 15px !important;
+        margin-bottom: 15px !important;
     }
-    .date {
-        font-size: 14px;
+
+    /* 4. ユーザー名や日付の文字調整 */
+    .username, .display-name, [href*="estpls"] {
+        font-size: 1.1rem !important;
+        font-weight: bold;
+    }
+    .date, .time, .timestamp {
+        font-size: 0.85rem !important;
     }
 }
-
         </style>
         </head><body>
         <h2 style="text-align: center; margin-top: 30px;">箴言集</h2>

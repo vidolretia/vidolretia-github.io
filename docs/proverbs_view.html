@@ -12,6 +12,32 @@
             .link { font-size: 0.85em; color: #71b1ff; text-decoration: none; border-bottom: 1px solid transparent; }
             .link:hover { border-bottom: 1px solid #71b1ff; }
             hr { border: 0; border-top: 1px solid #333; margin: 40px 0; }
+
+    /* --- 📱 スマホ用のスタイル（画面幅が768px以下のとき） --- */
+    @media screen and (max-width: 768px) {
+    
+    /* 箴言全体の文字サイズを大きくする */
+    body {
+        font-size: 18px; /* 好みに合わせて調整してください */
+    }
+
+    /* アイコン画像（imgタグ）を大きくする */
+    /* ※もしアイコンにクラス名（例: .icon）があればそれを使ってください */
+    img {
+        width: 60px;  /* スマホで見やすい大きさに調整 */
+        height: 60px;
+    }
+
+    /* アカウント名や日付などのフォントサイズ調整 */
+    .username, @estpls {
+        font-size: 16px;
+    }
+    
+    .date {
+        font-size: 14px;
+    }
+}
+
         </style>
         </head><body>
         <h2 style="text-align: center; margin-top: 30px;">箴言集</h2>
